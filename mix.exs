@@ -41,6 +41,7 @@ defmodule HipcallSdk.MixProject do
   defp deps do
     [
       {:httpoison, "~> 2.1"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.29", only: :dev, runtime: false}
     ]
   end
