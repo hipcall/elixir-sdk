@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  HIPCALL_API_KEY: 123456
+  HIPCALL_API_ENDPOINT: http://localhost
+
 permissions:
   contents: read
 
