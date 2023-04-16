@@ -6,8 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
+env:
+  HIPCALL_API_KEY: 123456
+  HIPCALL_API_ENDPOINT: http://localhost
 
 jobs:
   build:
