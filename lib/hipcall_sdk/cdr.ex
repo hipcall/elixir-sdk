@@ -4,6 +4,11 @@ defmodule HipcallSdk.Cdr do
   """
   @moduledoc since: "0.1.0"
   use HTTPoison.Base
+  use HipcallSdk.Utils.Header
+
+  def process_response_body(body) do
+    Jason.decode!(body)
+  end
 
   @doc """
   Get a CDR.
@@ -18,15 +23,9 @@ defmodule HipcallSdk.Cdr do
   """
   @doc since: "0.1.0"
   def retrieve(params) do
-    headers = [
-      {"Authorization", "Bearer #{HipcallSdk.Config.api_key()}"},
-      {"Accept", "Application/json; Charset=utf-8"},
-      {"Content-Type", "Application/json"}
-    ]
-
     HipcallSdk.Cdr.get(
       "#{System.get_env("HIPCALL_API_ENDPOINT")}/cdrs/#{params[:year]}/#{params[:month]}/#{params[:day]}/#{params[:uuid]}",
-      headers
+      @headers
     )
   end
 end
